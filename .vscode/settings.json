@@ -1,0 +1,21 @@
+{
+  "files.associations": {
+    "esp_io_extend.h": "c",
+    "i2c.h": "c",
+    "esp_tft.h": "c"
+  },
+  "idf.flashType": "UART",
+  "idf.portWin": "COM15",
+  "idf.openOcdConfigs": [
+    "board/esp32s3-bridge.cfg"
+  ],
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32s3"
+  },
+  "clangd.path": "d:\\D\\ESPIDF\\TOOLS\\tools\\esp-clang\\15.0.0-23786128ae\\esp-clang\\bin\\clangd.exe",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=d:\\D\\ESPIDF\\TOOLS\\tools\\xtensa-esp32s3-elf\\esp-12.2.0_20230208\\xtensa-esp32s3-elf\\bin\\xtensa-esp32s3-elf-gcc.exe",
+    "--compile-commands-dir=d:\\D\\ESP_project\\IO_extend\\build"
+  ]
+}
