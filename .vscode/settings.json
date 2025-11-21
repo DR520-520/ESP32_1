@@ -2,10 +2,15 @@
   "files.associations": {
     "esp_io_extend.h": "c",
     "i2c.h": "c",
-    "esp_tft.h": "c"
+    "esp_tft.h": "c",
+    "spi_common.h": "c",
+    "spi_master.h": "c",
+    "gpio.h": "c",
+    "ledc.h": "c",
+    "esp_log.h": "c"
   },
   "idf.flashType": "UART",
-  "idf.portWin": "COM15",
+  "idf.portWin": "COM13",
   "idf.openOcdConfigs": [
     "board/esp32s3-bridge.cfg"
   ],

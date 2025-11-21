@@ -6,7 +6,7 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: main
+# Project: ESP32S3
 # Configurations: 
 # =============================================================================
 # =============================================================================
@@ -14,7 +14,7 @@
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__main.2eelf_unscanned_
+rule C_COMPILER__ESP32S3.2eelf_unscanned_
   depfile = $DEP_FILE
   deps = gcc
   command = ccache ${LAUNCHER}${CODE_CHECK}D:\D\ESPIDF\TOOLS\tools\xtensa-esp32s3-elf\esp-12.2.0_20230208\xtensa-esp32s3-elf\bin\xtensa-esp32s3-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +24,7 @@ rule C_COMPILER__main.2eelf_unscanned_
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__main.2eelf_
+rule CXX_EXECUTABLE_LINKER__ESP32S3.2eelf_
   command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && D:\D\ESPIDF\TOOLS\tools\xtensa-esp32s3-elf\esp-12.2.0_20230208\xtensa-esp32s3-elf\bin\xtensa-esp32s3-elf-g++.exe $FLAGS $LINK_FLAGS @$RSP_FILE -o $TARGET_FILE && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   rspfile = $RSP_FILE
@@ -1438,7 +1438,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_main_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\D\ESPIDF\TOOLS\tools\cmake\3.30.2\bin\cmake.exe --regenerate-during-build -SD:\D\ESP_project\IO_extend -BD:\D\ESP_project\IO_extend\build
+  command = D:\D\ESPIDF\TOOLS\tools\cmake\3.30.2\bin\cmake.exe --regenerate-during-build -SD:\D\ESP_project\ESP32_1 -BD:\D\ESP_project\ESP32_1\build
   description = Re-running CMake...
   generator = 1
 

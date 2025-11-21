@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/main")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ESP32S3")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,10 +39,10 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/D/ESP_project/IO_extend/build/esp-idf/mbedtls/mbedtls/include/cmake_install.cmake")
-  include("D:/D/ESP_project/IO_extend/build/esp-idf/mbedtls/mbedtls/3rdparty/cmake_install.cmake")
-  include("D:/D/ESP_project/IO_extend/build/esp-idf/mbedtls/mbedtls/library/cmake_install.cmake")
-  include("D:/D/ESP_project/IO_extend/build/esp-idf/mbedtls/mbedtls/pkgconfig/cmake_install.cmake")
+  include("D:/D/ESP_project/ESP32_1/build/esp-idf/mbedtls/mbedtls/include/cmake_install.cmake")
+  include("D:/D/ESP_project/ESP32_1/build/esp-idf/mbedtls/mbedtls/3rdparty/cmake_install.cmake")
+  include("D:/D/ESP_project/ESP32_1/build/esp-idf/mbedtls/mbedtls/library/cmake_install.cmake")
+  include("D:/D/ESP_project/ESP32_1/build/esp-idf/mbedtls/mbedtls/pkgconfig/cmake_install.cmake")
 
 endif()
 
