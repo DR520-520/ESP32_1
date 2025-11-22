@@ -140,12 +140,10 @@ esp_err_t PCA9557_Write_Pin(PCA9557_IO_NUM IO_NUM, uint8_t PIN_Status)
 
 void LCD_CS_LOW(void)
 {
-    PCA9557_Set_IO(0x00, 0x00);
     PCA9557_Reset_Pin(PCA9557_IO_NUM_0);
 }
 
 void LCD_CS_HIGH(void)
 {
-    PCA9557_Set_IO(0x00, 0x00);
     PCA9557_Set_Pin(PCA9557_IO_NUM_0);
 }
