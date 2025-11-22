@@ -151,9 +151,9 @@
 
 void st7789_hardware_init();
 
-void st7789_SendCMD(uint8_t data);
+void st7789_SendCMD(uint8_t *data);
 
-void st7789_SendData(uint8_t *data,  uint16_t len);
+void st7789_SendData(uint8_t *data,  uint8_t len);
 
 void st7789_software_init(void);
 
@@ -163,6 +163,6 @@ void TFT_set_window(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye);
 
 void TFT_fill_screen(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye, uint16_t color);
 
-void TFT_set_backlight(uint16_t brightness);
+//void TFT_set_backlight(uint16_t brightness);
 
 #endif
