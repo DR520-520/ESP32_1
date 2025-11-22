@@ -216,8 +216,9 @@ void st7789_software_init(void)
     cmd = 0x29;
     st7789_SendCMD(&cmd);
     vTaskDelay(pdMS_TO_TICKS(10));
-    
+
     ESP_LOGI("TFT", "软件初始化完成");
+    TFT_fill_screen(0,0,319,239,0x0000);
 }
 
 void TFT_init(void)
@@ -249,6 +250,7 @@ void TFT_fill_screen(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye, uint16_
 
     uint8_t cmd = ST7789_RAMWR;
     st7789_SendCMD(&cmd);
+
     uint8_t rgb_color[480];
     for(i = 0; i < 240; i++)
     {
@@ -258,7 +260,7 @@ void TFT_fill_screen(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye, uint16_
 
     LCD_CS_LOW();
     gpio_set_level(IO39_LCD_DC, 1);
-    
+
     for(i = 0; i < (xe - xs + 1); i++)
     {
         spi_transaction_t trans = {
@@ -269,3 +271,36 @@ void TFT_fill_screen(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye, uint16_
     }
     LCD_CS_HIGH();
 }
+
+void TFT_draw_bitmap(uint16_t xs, uint16_t ys, uint16_t length, uint16_t width, uint16_t *color)
+{
+    
+    TFT_set_window(xs, ys, xs + length - 1, ys + width - 1);
+    uint32_t total_bytes = length * width * 2;
+    uint16_t *color_LSB = malloc(length * width * sizeof(uint16_t));
+    for (int i = 0; i < length * width; i++) 
+    {
+        uint16_t c = __builtin_bswap16(color[i]);
+        color_LSB[i] = c;
+    }
+    uint8_t *data = (uint8_t *)color_LSB;
+
+    uint8_t cmd = ST7789_RAMWR;
+    st7789_SendCMD(&cmd);
+    LCD_CS_LOW();
+    gpio_set_level(IO39_LCD_DC, 1);
+
+    uint32_t sent = 0;
+    while(sent < total_bytes)
+    {
+        uint32_t sent_num = (total_bytes - sent) > 4096 ? 4096 :(total_bytes - sent);
+        spi_transaction_t trans = {
+            .length = sent_num * 8,
+            .tx_buffer = data + sent,
+        };
+        ESP_ERROR_CHECK(spi_device_polling_transmit(handle_spi_tft, &trans));
+        sent += sent_num;
+    }
+    LCD_CS_HIGH();
+    free(color_LSB);
+}   

@@ -163,6 +163,8 @@ void TFT_set_window(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye);
 
 void TFT_fill_screen(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye, uint16_t color);
 
-//void TFT_set_backlight(uint16_t brightness);
+void TFT_draw_bitmap(uint16_t xs, uint16_t ys, uint16_t length, uint16_t width, uint16_t *color);
 
 #endif
+
+
