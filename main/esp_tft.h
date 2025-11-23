@@ -7,7 +7,7 @@
 #include "driver/gpio.h"
 #include "driver/ledc.h"
 #include "esp_io_extend.h"
-
+#include "color.h"
 
 #define TFT_WIDTH       320
 #define TFT_LENGTH      240
@@ -164,6 +164,8 @@ void TFT_set_window(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye);
 void TFT_fill_screen(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye, uint16_t color);
 
 void TFT_draw_bitmap(uint16_t xs, uint16_t ys, uint16_t length, uint16_t width, uint16_t *color);
+
+void TFT_set_background_light(uint32_t light_persent);
 
 #endif
 

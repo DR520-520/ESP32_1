@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "ESP32S3",
-    "project_version":    "c57debc-dirty",
+    "project_version":    "ebaab70-dirty",
     "project_path":       "D:/D/ESP_project/ESP32_1",
     "idf_path":           "D:/D/ESPIDF/v5.1.6/esp-idf",
     "build_dir":          "D:/D/ESP_project/ESP32_1/build",

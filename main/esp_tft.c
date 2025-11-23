@@ -218,7 +218,7 @@ void st7789_software_init(void)
     vTaskDelay(pdMS_TO_TICKS(10));
 
     ESP_LOGI("TFT", "软件初始化完成");
-    TFT_fill_screen(0,0,319,239,0x0000);
+    TFT_fill_screen(0,0,319,239,COLOR_JADE);
 }
 
 void TFT_init(void)
@@ -245,7 +245,7 @@ void TFT_set_window(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye)
 void TFT_fill_screen(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye, uint16_t color)
 {
     uint16_t i = 0;
-    uint16_t size = (xe - xs + 1) * (ye - ys + 1);
+    
     TFT_set_window(xs, ys, xe, ye);
 
     uint8_t cmd = ST7789_RAMWR;
@@ -304,3 +304,14 @@ void TFT_draw_bitmap(uint16_t xs, uint16_t ys, uint16_t length, uint16_t width, 
     LCD_CS_HIGH();
     free(color_LSB);
 }   
+
+void TFT_set_background_light(uint32_t light_persent)
+{
+    uint32_t light = light_persent * 1023 / 100;
+    if(light > 1023)
+    {
+        light = 1023;
+    }
+    ESP_ERROR_CHECK(ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, light));
+    ESP_ERROR_CHECK(ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0));
+}
